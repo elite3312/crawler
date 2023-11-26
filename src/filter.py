@@ -66,6 +66,8 @@ def filter_output(src_csv='output_1.csv'):
         dates = df['date']
         company_data = df[company]
 
+
+        # if date is valid, add it to new csv
         filtered_dates = []
         filtered_data = []
         for i in range(len(dates)):
