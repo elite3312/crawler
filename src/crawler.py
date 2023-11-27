@@ -198,7 +198,7 @@ def get_daily_data(word: str,
 #    complete['result'] = scaler(complete['result'])
         
     return complete
-def crawl_yearly(year,keywords,start_month,end_month,output_path):
+def crawl_yearly(year,keywords,start_month,end_month,output_path,wait_time):
     # In case of data miss result from 429s error, I save crawl data as a global variable
     global crawl_data_all, crawl_results
     
@@ -208,7 +208,7 @@ def crawl_yearly(year,keywords,start_month,end_month,output_path):
 
     crawl_data_all = pd.DataFrame()
     for word in keywords:
-        crawl_results = get_daily_data(word, year, start_month, year_1, end_month, 'TW', True, wait_time=5.0)
+        crawl_results = get_daily_data(word, year, start_month, year_1, end_month, 'TW', True, wait_time=wait_time)
         crawl_data_all[word] = crawl_results[word]
         print('---------- {} Finished ----------'.format(word))
         if(len(keywords)>1):
