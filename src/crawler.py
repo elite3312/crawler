@@ -198,7 +198,7 @@ def get_daily_data(word: str,
 #    complete['result'] = scaler(complete['result'])
         
     return complete
-def crawl_yearly(year,keywords,start_month,end_month):
+def crawl_yearly(year,keywords,start_month,end_month,output_path):
     # In case of data miss result from 429s error, I save crawl data as a global variable
     global crawl_data_all, crawl_results
     
@@ -214,4 +214,4 @@ def crawl_yearly(year,keywords,start_month,end_month):
         if(len(keywords)>1):
             sleep(20)
         
-    crawl_data_all.to_csv('output_1.csv', encoding='utf-8-sig')
+    crawl_data_all.to_csv(output_path, encoding='utf-8-sig')

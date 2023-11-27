@@ -45,10 +45,10 @@ def find_k_valid_days_before_rev_day(k=5, year=2021, month=10, day=11)->list[dat
     return res
 
 
-def filter_output(src_csv='output_1.csv'):
+def filter_output(src_csv='output_1.csv',rev_day_csv='營收發布.csv'):
     df = pd.read_csv(src_csv)
 
-    company_rev_days = read_revenue_reveal_days('營收發布.csv')
+    company_rev_days = read_revenue_reveal_days(rev_day_csv)
 
     for company in df.keys():
         if company == 'date':
