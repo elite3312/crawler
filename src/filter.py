@@ -10,10 +10,19 @@ def read_revenue_reveal_days(src_csv='營收發布.csv') -> dict:
 
     for i in range(len(df['證券代碼'])):
         company = df['證券代碼'][i][:4]
-        revenue_reveal_day = df['營收發布日'][i]
-        year = revenue_reveal_day.split('/')[0]
-        month = revenue_reveal_day.split('/')[1]
-        day = revenue_reveal_day.split('/')[2]
+        try:
+            revenue_reveal_day = str(int(df['營收發布日'][i]))
+        except:
+            pass
+
+        if revenue_reveal_day.find('/')>-1:
+            year = revenue_reveal_day.split('/')[0]
+            month = revenue_reveal_day.split('/')[1]
+            day = revenue_reveal_day.split('/')[2]
+        else:
+            year = int( revenue_reveal_day[:4])
+            month = int(revenue_reveal_day[4:6])
+            day =int( revenue_reveal_day[6:8])
 
         if companies.get(company) is None:
             companies[company] = {}

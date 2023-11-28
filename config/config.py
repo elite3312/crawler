@@ -6,4 +6,4 @@ end_month=3
 output1_path='output_1.csv'
 wait_time=10
 # filter
-rev_day_csv='營收發布.csv'
+rev_day_csv='營收公告.csv'
